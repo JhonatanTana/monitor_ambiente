@@ -13,8 +13,12 @@ class _AppBigCardState extends State<AppBigCard> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 1.5,
       color: AppColors.onBackground,
+      elevation: 0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+        side: BorderSide(color: Colors.grey.withValues(alpha: 0.1)),
+      ),
       child: SizedBox(
         width: double.infinity,
         height: 150,

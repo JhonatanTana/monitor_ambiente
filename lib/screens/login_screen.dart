@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:monitor_ambiente/constants/app_colors.dart';
 import 'package:monitor_ambiente/routes/app_router.dart';
 import 'package:monitor_ambiente/widgets/app_button.dart';
+import 'package:monitor_ambiente/widgets/app_input.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -28,6 +29,9 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController emailController = TextEditingController();
+    TextEditingController passwordController = TextEditingController();
+
     return Scaffold(
       backgroundColor: AppColors.background,
       body: SafeArea(
@@ -47,18 +51,20 @@ class _LoginScreenState extends State<LoginScreen> {
                 Column(
                   spacing: 8,
                   children: [
-                    TextFormField(
-                      decoration: const InputDecoration(
-                        labelText: 'Email',
-                        border: OutlineInputBorder(),
-                      ),
+
+                    AppInput(
+                      title: "Email",
+                      controller: emailController,
+                      keyboardType: TextInputType.emailAddress,
+                      prefixIcon: Icons.email,
                     ),
 
-                    TextFormField(
-                      decoration: const InputDecoration(
-                        labelText: 'Senha',
-                        border: OutlineInputBorder(),
-                      ),
+                    AppInput(
+                      title: "Senha",
+                      controller: passwordController,
+                      keyboardType: TextInputType.visiblePassword,
+                      prefixIcon: Icons.lock,
+                      obscureText: true,
                     ),
 
                     AppButton(

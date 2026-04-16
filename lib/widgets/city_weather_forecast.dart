@@ -16,7 +16,7 @@ class _CityWeatherForecastState extends State<CityWeatherForecast> {
     return SizedBox(
       width: double.infinity,
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 16),
+        padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
         child: Container(
           color: Colors.transparent,
           child: Row(
@@ -25,7 +25,11 @@ class _CityWeatherForecastState extends State<CityWeatherForecast> {
               Row(
                 spacing: 8,
                 children: [
-                  Icon(Icons.thunderstorm, size: 64),
+
+                  Image.asset(
+                    "assets/images/Cloudy.png",
+                    width: 64,
+                  ),
 
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,

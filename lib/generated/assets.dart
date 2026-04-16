@@ -5,89 +5,158 @@ import 'package:flutter/widgets.dart';
 class Assets {
   Assets._();
 
-  static const $AssetsFontsGen fonts = $AssetsFontsGen();
-  static const $AssetsImagesGen images = $AssetsImagesGen();
+  static const $AssetsFontsGen fonts =
+      $AssetsFontsGen();
+  static const $AssetsImagesGen images =
+      $AssetsImagesGen();
 }
 
 class $AssetsFontsGen {
   const $AssetsFontsGen();
 
-  final String inter18ptBlack = 'assets/fonts/Inter_18pt-Black.ttf';
-  final String inter18ptBlackItalic = 'assets/fonts/Inter_18pt-BlackItalic.ttf';
-  final String inter18ptBold = 'assets/fonts/Inter_18pt-Bold.ttf';
-  final String inter18ptBoldItalic = 'assets/fonts/Inter_18pt-BoldItalic.ttf';
-  final String inter18ptExtraBold = 'assets/fonts/Inter_18pt-ExtraBold.ttf';
-  final String inter18ptExtraBoldItalic =
+  final String inter18ptBlack =
+      'assets/fonts/Inter_18pt-Black.ttf';
+  final String inter18ptBlackItalic =
+      'assets/fonts/Inter_18pt-BlackItalic.ttf';
+  final String inter18ptBold =
+      'assets/fonts/Inter_18pt-Bold.ttf';
+  final String inter18ptBoldItalic =
+      'assets/fonts/Inter_18pt-BoldItalic.ttf';
+  final String inter18ptExtraBold =
+      'assets/fonts/Inter_18pt-ExtraBold.ttf';
+  final String
+  inter18ptExtraBoldItalic =
       'assets/fonts/Inter_18pt-ExtraBoldItalic.ttf';
-  final String inter18ptExtraLight = 'assets/fonts/Inter_18pt-ExtraLight.ttf';
-  final String inter18ptExtraLightItalic =
+  final String inter18ptExtraLight =
+      'assets/fonts/Inter_18pt-ExtraLight.ttf';
+  final String
+  inter18ptExtraLightItalic =
       'assets/fonts/Inter_18pt-ExtraLightItalic.ttf';
-  final String inter18ptItalic = 'assets/fonts/Inter_18pt-Italic.ttf';
-  final String inter18ptLight = 'assets/fonts/Inter_18pt-Light.ttf';
-  final String inter18ptLightItalic = 'assets/fonts/Inter_18pt-LightItalic.ttf';
-  final String inter18ptMedium = 'assets/fonts/Inter_18pt-Medium.ttf';
+  final String inter18ptItalic =
+      'assets/fonts/Inter_18pt-Italic.ttf';
+  final String inter18ptLight =
+      'assets/fonts/Inter_18pt-Light.ttf';
+  final String inter18ptLightItalic =
+      'assets/fonts/Inter_18pt-LightItalic.ttf';
+  final String inter18ptMedium =
+      'assets/fonts/Inter_18pt-Medium.ttf';
   final String inter18ptMediumItalic =
       'assets/fonts/Inter_18pt-MediumItalic.ttf';
-  final String inter18ptRegular = 'assets/fonts/Inter_18pt-Regular.ttf';
-  final String inter18ptSemiBold = 'assets/fonts/Inter_18pt-SemiBold.ttf';
+  final String inter18ptRegular =
+      'assets/fonts/Inter_18pt-Regular.ttf';
+  final String inter18ptSemiBold =
+      'assets/fonts/Inter_18pt-SemiBold.ttf';
   final String inter18ptSemiBoldItalic =
       'assets/fonts/Inter_18pt-SemiBoldItalic.ttf';
-  final String inter18ptThin = 'assets/fonts/Inter_18pt-Thin.ttf';
-  final String inter18ptThinItalic = 'assets/fonts/Inter_18pt-ThinItalic.ttf';
-  final String inter24ptBlack = 'assets/fonts/Inter_24pt-Black.ttf';
-  final String inter24ptBlackItalic = 'assets/fonts/Inter_24pt-BlackItalic.ttf';
-  final String inter24ptBold = 'assets/fonts/Inter_24pt-Bold.ttf';
-  final String inter24ptBoldItalic = 'assets/fonts/Inter_24pt-BoldItalic.ttf';
-  final String inter24ptExtraBold = 'assets/fonts/Inter_24pt-ExtraBold.ttf';
-  final String inter24ptExtraBoldItalic =
+  final String inter18ptThin =
+      'assets/fonts/Inter_18pt-Thin.ttf';
+  final String inter18ptThinItalic =
+      'assets/fonts/Inter_18pt-ThinItalic.ttf';
+  final String inter24ptBlack =
+      'assets/fonts/Inter_24pt-Black.ttf';
+  final String inter24ptBlackItalic =
+      'assets/fonts/Inter_24pt-BlackItalic.ttf';
+  final String inter24ptBold =
+      'assets/fonts/Inter_24pt-Bold.ttf';
+  final String inter24ptBoldItalic =
+      'assets/fonts/Inter_24pt-BoldItalic.ttf';
+  final String inter24ptExtraBold =
+      'assets/fonts/Inter_24pt-ExtraBold.ttf';
+  final String
+  inter24ptExtraBoldItalic =
       'assets/fonts/Inter_24pt-ExtraBoldItalic.ttf';
-  final String inter24ptExtraLight = 'assets/fonts/Inter_24pt-ExtraLight.ttf';
-  final String inter24ptExtraLightItalic =
+  final String inter24ptExtraLight =
+      'assets/fonts/Inter_24pt-ExtraLight.ttf';
+  final String
+  inter24ptExtraLightItalic =
       'assets/fonts/Inter_24pt-ExtraLightItalic.ttf';
-  final String inter24ptItalic = 'assets/fonts/Inter_24pt-Italic.ttf';
-  final String inter24ptLight = 'assets/fonts/Inter_24pt-Light.ttf';
-  final String inter24ptLightItalic = 'assets/fonts/Inter_24pt-LightItalic.ttf';
-  final String inter24ptMedium = 'assets/fonts/Inter_24pt-Medium.ttf';
+  final String inter24ptItalic =
+      'assets/fonts/Inter_24pt-Italic.ttf';
+  final String inter24ptLight =
+      'assets/fonts/Inter_24pt-Light.ttf';
+  final String inter24ptLightItalic =
+      'assets/fonts/Inter_24pt-LightItalic.ttf';
+  final String inter24ptMedium =
+      'assets/fonts/Inter_24pt-Medium.ttf';
   final String inter24ptMediumItalic =
       'assets/fonts/Inter_24pt-MediumItalic.ttf';
-  final String inter24ptRegular = 'assets/fonts/Inter_24pt-Regular.ttf';
-  final String inter24ptSemiBold = 'assets/fonts/Inter_24pt-SemiBold.ttf';
+  final String inter24ptRegular =
+      'assets/fonts/Inter_24pt-Regular.ttf';
+  final String inter24ptSemiBold =
+      'assets/fonts/Inter_24pt-SemiBold.ttf';
   final String inter24ptSemiBoldItalic =
       'assets/fonts/Inter_24pt-SemiBoldItalic.ttf';
-  final String inter24ptThin = 'assets/fonts/Inter_24pt-Thin.ttf';
-  final String inter24ptThinItalic = 'assets/fonts/Inter_24pt-ThinItalic.ttf';
-  final String inter28ptBlack = 'assets/fonts/Inter_28pt-Black.ttf';
-  final String inter28ptBlackItalic = 'assets/fonts/Inter_28pt-BlackItalic.ttf';
-  final String inter28ptBold = 'assets/fonts/Inter_28pt-Bold.ttf';
-  final String inter28ptBoldItalic = 'assets/fonts/Inter_28pt-BoldItalic.ttf';
-  final String inter28ptExtraBold = 'assets/fonts/Inter_28pt-ExtraBold.ttf';
-  final String inter28ptExtraBoldItalic =
+  final String inter24ptThin =
+      'assets/fonts/Inter_24pt-Thin.ttf';
+  final String inter24ptThinItalic =
+      'assets/fonts/Inter_24pt-ThinItalic.ttf';
+  final String inter28ptBlack =
+      'assets/fonts/Inter_28pt-Black.ttf';
+  final String inter28ptBlackItalic =
+      'assets/fonts/Inter_28pt-BlackItalic.ttf';
+  final String inter28ptBold =
+      'assets/fonts/Inter_28pt-Bold.ttf';
+  final String inter28ptBoldItalic =
+      'assets/fonts/Inter_28pt-BoldItalic.ttf';
+  final String inter28ptExtraBold =
+      'assets/fonts/Inter_28pt-ExtraBold.ttf';
+  final String
+  inter28ptExtraBoldItalic =
       'assets/fonts/Inter_28pt-ExtraBoldItalic.ttf';
-  final String inter28ptExtraLight = 'assets/fonts/Inter_28pt-ExtraLight.ttf';
-  final String inter28ptExtraLightItalic =
+  final String inter28ptExtraLight =
+      'assets/fonts/Inter_28pt-ExtraLight.ttf';
+  final String
+  inter28ptExtraLightItalic =
       'assets/fonts/Inter_28pt-ExtraLightItalic.ttf';
-  final String inter28ptItalic = 'assets/fonts/Inter_28pt-Italic.ttf';
-  final String inter28ptLight = 'assets/fonts/Inter_28pt-Light.ttf';
-  final String inter28ptLightItalic = 'assets/fonts/Inter_28pt-LightItalic.ttf';
-  final String inter28ptMedium = 'assets/fonts/Inter_28pt-Medium.ttf';
+  final String inter28ptItalic =
+      'assets/fonts/Inter_28pt-Italic.ttf';
+  final String inter28ptLight =
+      'assets/fonts/Inter_28pt-Light.ttf';
+  final String inter28ptLightItalic =
+      'assets/fonts/Inter_28pt-LightItalic.ttf';
+  final String inter28ptMedium =
+      'assets/fonts/Inter_28pt-Medium.ttf';
   final String inter28ptMediumItalic =
       'assets/fonts/Inter_28pt-MediumItalic.ttf';
-  final String inter28ptRegular = 'assets/fonts/Inter_28pt-Regular.ttf';
-  final String inter28ptSemiBold = 'assets/fonts/Inter_28pt-SemiBold.ttf';
+  final String inter28ptRegular =
+      'assets/fonts/Inter_28pt-Regular.ttf';
+  final String inter28ptSemiBold =
+      'assets/fonts/Inter_28pt-SemiBold.ttf';
   final String inter28ptSemiBoldItalic =
       'assets/fonts/Inter_28pt-SemiBoldItalic.ttf';
-  final String inter28ptThin = 'assets/fonts/Inter_28pt-Thin.ttf';
-  final String inter28ptThinItalic = 'assets/fonts/Inter_28pt-ThinItalic.ttf';
+  final String inter28ptThin =
+      'assets/fonts/Inter_28pt-Thin.ttf';
+  final String inter28ptThinItalic =
+      'assets/fonts/Inter_28pt-ThinItalic.ttf';
 }
 
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
-  final AssetGenImage logo = const AssetGenImage('assets/images/logo.png');
+  final AssetGenImage cloud =
+      const AssetGenImage(
+        'assets/images/Cloud.png',
+      );
+  final AssetGenImage cloudy =
+      const AssetGenImage(
+        'assets/images/Cloudy.png',
+      );
+  final AssetGenImage sun =
+      const AssetGenImage(
+        'assets/images/Sun.png',
+      );
+  final AssetGenImage logo =
+      const AssetGenImage(
+        'assets/images/logo.png',
+      );
 }
 
 class AssetGenImage {
-  const AssetGenImage(this._assetName, {this.size, this.flavors = const {}});
+  const AssetGenImage(
+    this._assetName, {
+    this.size,
+    this.flavors = const {},
+  });
 
   final String _assetName;
 
@@ -98,7 +167,8 @@ class AssetGenImage {
     Key? key,
     AssetBundle? bundle,
     ImageFrameBuilder? frameBuilder,
-    ImageErrorWidgetBuilder? errorBuilder,
+    ImageErrorWidgetBuilder?
+    errorBuilder,
     String? semanticLabel,
     bool excludeFromSemantics = false,
     double? scale,
@@ -108,14 +178,17 @@ class AssetGenImage {
     Animation<double>? opacity,
     BlendMode? colorBlendMode,
     BoxFit? fit,
-    AlignmentGeometry alignment = Alignment.center,
-    ImageRepeat repeat = ImageRepeat.noRepeat,
+    AlignmentGeometry alignment =
+        Alignment.center,
+    ImageRepeat repeat =
+        ImageRepeat.noRepeat,
     Rect? centerSlice,
     bool matchTextDirection = false,
     bool gaplessPlayback = false,
     bool isAntiAlias = false,
     String? package,
-    FilterQuality filterQuality = FilterQuality.low,
+    FilterQuality filterQuality =
+        FilterQuality.low,
     int? cacheWidth,
     int? cacheHeight,
   }) {
@@ -126,7 +199,8 @@ class AssetGenImage {
       frameBuilder: frameBuilder,
       errorBuilder: errorBuilder,
       semanticLabel: semanticLabel,
-      excludeFromSemantics: excludeFromSemantics,
+      excludeFromSemantics:
+          excludeFromSemantics,
       scale: scale,
       width: width,
       height: height,
@@ -137,7 +211,8 @@ class AssetGenImage {
       alignment: alignment,
       repeat: repeat,
       centerSlice: centerSlice,
-      matchTextDirection: matchTextDirection,
+      matchTextDirection:
+          matchTextDirection,
       gaplessPlayback: gaplessPlayback,
       isAntiAlias: isAntiAlias,
       package: package,
@@ -147,17 +222,29 @@ class AssetGenImage {
     );
   }
 
-  ImageProvider provider({AssetBundle? bundle, String? package}) {
-    return AssetImage(_assetName, bundle: bundle, package: package);
+  ImageProvider provider({
+    AssetBundle? bundle,
+    String? package,
+  }) {
+    return AssetImage(
+      _assetName,
+      bundle: bundle,
+      package: package,
+    );
   }
 
   Widget custom({
     Key? key,
-    required Widget Function(BuildContext context, String assetPath) builder,
+    required Widget Function(
+      BuildContext context,
+      String assetPath,
+    )
+    builder,
   }) {
     return Builder(
       key: key,
-      builder: (context) => builder(context, _assetName),
+      builder: (context) =>
+          builder(context, _assetName),
     );
   }
 
