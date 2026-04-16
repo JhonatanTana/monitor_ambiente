@@ -40,7 +40,7 @@ class _AppTopBarState extends State<AppTopBar> {
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 20,
-                  color: Colors.grey.shade700,
+                  color: AppColors.secondaryText,
                 ),
               ),
             ),
@@ -49,17 +49,19 @@ class _AppTopBarState extends State<AppTopBar> {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-              const Text(
+              Text(
                 "Bem Vindo,",
                 style: TextStyle(
                   fontSize: 12,
+                  color: AppColors.secondaryText
                 ),
               ),
               Text(
                 "Jhonatan Souza",
                 style: TextStyle(
                   fontSize: 16,
-                  fontWeight: FontWeight.bold
+                  fontWeight: FontWeight.w600,
+                  color: AppColors.primaryText
                 ),
               ),
             ],
@@ -73,7 +75,7 @@ class _AppTopBarState extends State<AppTopBar> {
         ),
         IconButton(
           onPressed: () {},
-          icon: Icon(Icons.refresh, color: AppColors.primary),
+          icon: Icon(Icons.refresh, color: AppColors.primaryText),
         ),
       ],
     );

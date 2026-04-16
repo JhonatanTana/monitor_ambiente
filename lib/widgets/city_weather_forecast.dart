@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:monitor_ambiente/constants/app_colors.dart';
 
 import 'city_weather_forecast_icons.dart';
 
@@ -34,14 +35,15 @@ class _CityWeatherForecastState extends State<CityWeatherForecast> {
                         "Varginha",
                         style: TextStyle(
                           fontSize: 20,
-                          fontWeight: FontWeight.bold
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.primaryText
                         ),
                       ),
                       Text(
                         "Quarta-feira, 16/04/2026",
                         style: TextStyle(
                           fontSize: 12,
-                          color: Colors.grey.shade600
+                          color: AppColors.secondaryText
                         ),
                       ),
                     ],

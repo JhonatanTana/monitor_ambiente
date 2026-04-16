@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:monitor_ambiente/constants/app_colors.dart';
 
 class CityWeatherForecastIcons extends StatelessWidget {
   final IconData icon;
@@ -20,7 +21,7 @@ class CityWeatherForecastIcons extends StatelessWidget {
           text,
           style: TextStyle(
             fontSize: 12,
-            color: Colors.grey.shade800,
+            color: AppColors.secondaryText,
           ),
         ),
       ],

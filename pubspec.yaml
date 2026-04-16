@@ -19,8 +19,11 @@ dev_dependencies:
     sdk: flutter
 
   flutter_lints: ^6.0.0
+  sleek_circular_slider: ^2.0.1
+  shimmer: ^3.0.0
 
 flutter:
+  generate: true
   uses-material-design: true
 
   assets:

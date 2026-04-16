@@ -25,8 +25,21 @@ class HomeScreen extends StatelessWidget {
               spacing: 8,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-               AppLittleCard(),
-               AppLittleCard(),
+               AppLittleCard(
+                 title: "Temperatura",
+                 icon: Icons.local_fire_department,
+                 colors: [Colors.orange, Colors.red],
+                 value: 25,
+                 maxValue: 50,
+                 unit: "°C",
+               ),
+               AppLittleCard(
+                 title: "Umidade",
+                 icon: Icons.water_drop,
+                 colors: [Colors.lightBlue, Colors.blue],
+                 value: 40,
+                 unit: "%",
+               ),
               ],
             ),
 
