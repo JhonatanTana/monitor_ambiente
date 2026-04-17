@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:monitor_ambiente/constants/app_colors.dart';
+import 'package:monitor_ambiente/models/weather_model.dart';
+import 'package:monitor_ambiente/services/weather_service.dart';
 
 import 'city_weather_forecast_icons.dart';
 
@@ -11,74 +14,106 @@ class CityWeatherForecast extends StatefulWidget {
 }
 
 class _CityWeatherForecastState extends State<CityWeatherForecast> {
+  final WeatherService _weatherService = WeatherService();
+  late Future<WeatherModel> _weatherFuture;
+
+  @override
+  void initState() {
+    super.initState();
+    _weatherFuture = _weatherService.fetchWeather("Varginha");
+  }
+
+  String _getWeatherIcon(String iconCode) {
+    return "https://openweathermap.org/img/wn/$iconCode@4x.png";
+  }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
-        child: Container(
-          color: Colors.transparent,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                spacing: 8,
+        child: FutureBuilder<WeatherModel>(
+          future: _weatherFuture,
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(child: CircularProgressIndicator());
+            } else if (snapshot.hasError) {
+              return Center(
+                child: Text(
+                  "Erro ao carregar clima",
+                  style: TextStyle(color: Colors.red),
+                ),
+              );
+            } else if (!snapshot.hasData) {
+              return const Center(child: Text("Sem dados"));
+            }
+
+            final weather = snapshot.data!;
+            final formattedDate = DateFormat("EEEE, dd/MM/yyyy", 'pt_BR').format(weather.date);
+            final capitalizedDate = formattedDate[0].toUpperCase() + formattedDate.substring(1);
+
+            return Container(
+              color: Colors.transparent,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-
-                  Image.asset(
-                    "assets/images/Cloudy.png",
-                    width: 64,
-                  ),
-
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
+                  Row(
+                    spacing: 8,
                     children: [
-                      Text(
-                        "Varginha",
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.primaryText
+                      Image.network(
+                        _getWeatherIcon(weather.icon),
+                        width: 64,
+                        errorBuilder: (context, error, stackTrace) => Image.asset(
+                          "assets/images/Cloudy.png",
+                          width: 64,
                         ),
                       ),
-                      Text(
-                        "Quarta-feira, 16/04/2026",
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: AppColors.secondaryText
-                        ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            weather.cityName,
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: AppColors.primaryText),
+                          ),
+                          Text(
+                            capitalizedDate,
+                            style: TextStyle(
+                                fontSize: 12, color: AppColors.secondaryText),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      CityWeatherForecastIcons(
+                        icon: Icons.local_fire_department,
+                        iconColor: Colors.orange,
+                        text: "${weather.temperature.toStringAsFixed(0)}°C",
+                      ),
+                      CityWeatherForecastIcons(
+                        icon: Icons.water_drop,
+                        iconColor: Colors.lightBlue,
+                        text: "${weather.humidity}%",
+                      ),
+                      CityWeatherForecastIcons(
+                        icon: Icons.cloud,
+                        iconColor: Colors.blueGrey.shade500,
+                        text: "${weather.rain.toStringAsFixed(1)}mm",
                       ),
                     ],
                   ),
                 ],
               ),
-
-              Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-
-                  CityWeatherForecastIcons(
-                    icon: Icons.local_fire_department,
-                    iconColor: Colors.orange,
-                    text: "24°C",
-                  ),
-                  CityWeatherForecastIcons(
-                    icon: Icons.water_drop,
-                    iconColor: Colors.lightBlue,
-                    text: "40%",
-                  ),
-                  CityWeatherForecastIcons(
-                    icon: Icons.cloud,
-                    iconColor: Colors.blueGrey.shade500,
-                    text: "0.9mm",
-                  ),
-                ],
-              ),
-            ],
-          ),
+            );
+          },
         ),
       ),
     );
