@@ -119,3 +119,4 @@ app.*.symbols
 !/dev/ci/**/Gemfile.lock
 android/app/google-services.json
 firebase.json
+lib/services/weather_service.dart
