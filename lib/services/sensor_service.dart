@@ -11,7 +11,7 @@ class SensorService {
   Future<List<Sensor>> getMeasures() async {
     try {
       final QuerySnapshot<Map<String, dynamic>> snapshot =
-          await _storage.collection(_table).get();
+          await _storage.collection(_table).orderBy("data", descending: true).get();
 
       return snapshot.docs
           .map((doc) => Sensor.fromMap(doc.data()))

@@ -23,6 +23,8 @@ dependencies:
   firebase_core: ^4.6.0
   sleek_circular_slider: ^2.0.1
   shimmer: ^3.0.0
+  flutter_bloc: ^9.1.1
+  equatable: ^2.0.8
 
 dev_dependencies:
   flutter_test:
