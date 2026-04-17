@@ -103,11 +103,14 @@ class HomeView extends StatelessWidget {
                           ),
                         ],
                       ),
+                      AppBigCard(
+                        sensors: state is SensorSuccess ? state.sensors : [],
+                        isLoading: isLoading,
+                      ),
                     ],
                   );
                 },
               ),
-              const AppBigCard(),
             ],
           ),
         ),
