@@ -10,6 +10,7 @@ import 'package:monitor_ambiente/widgets/city_weather_forecast.dart';
 import '../blocs/sensor/sensor_cubit.dart';
 import '../blocs/sensor/sensor_state.dart';
 import '../routes/app_router.dart';
+import '../widgets/app_segmented_button.dart';
 import '../widgets/app_top_bar.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -61,22 +62,39 @@ class HomeView extends StatelessWidget {
                     children: [
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8),
-                        child: Column(
-                          spacing: 1,
-                          mainAxisSize: MainAxisSize.min,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            const Text(
-                              "Última atualização:",
-                              style: TextStyle(
-                                fontSize: 12,
-                              ),
+                            AppSegmentedButton<SensorFilter>(
+                              selected: state.filter,
+                              options: [
+                                AppSegmentedButtonOption(value: SensorFilter.day, label: "Dia"),
+                                AppSegmentedButtonOption(value: SensorFilter.week, label: "Semana"),
+                                AppSegmentedButtonOption(value: SensorFilter.month, label: "Mês"),
+                                AppSegmentedButtonOption(value: SensorFilter.all, label: "Tudo"),
+                              ],
+                              onSelectionChanged: (filter) {
+                                context.read<SensorCubit>().fetchMeasures(filter: filter);
+                              },
                             ),
-                            Text(
-                              DateFormatter.formatToString(lastCheck, true),
-                              style: TextStyle(
-                                fontSize: 12,
-                              ),
-                            )
+                            Column(
+                              spacing: 1,
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                const Text(
+                                  "Última atualização:",
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                  ),
+                                ),
+                                Text(
+                                  DateFormatter.formatToString(lastCheck, true),
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                  ),
+                                )
+                              ],
+                            ),
                           ],
                         ),
                       ),
@@ -106,6 +124,13 @@ class HomeView extends StatelessWidget {
                       AppBigCard(
                         sensors: state is SensorSuccess ? state.sensors : [],
                         isLoading: isLoading,
+                        title: state.filter == SensorFilter.day
+                            ? "Histórico (Últimas 24h)"
+                            : state.filter == SensorFilter.week
+                                ? "Histórico (Últimos 7 dias)"
+                                : state.filter == SensorFilter.month
+                                    ? "Histórico (Últimos 30 dias)"
+                                    : "Histórico (Tudo)",
                       ),
                     ],
                   );
@@ -118,3 +143,5 @@ class HomeView extends StatelessWidget {
     );
   }
 }
+
+

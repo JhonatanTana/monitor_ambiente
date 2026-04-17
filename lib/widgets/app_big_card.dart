@@ -9,11 +9,13 @@ import 'app_shimmer.dart';
 class AppBigCard extends StatelessWidget {
   final List<Sensor> sensors;
   final bool isLoading;
+  final String title;
 
   const AppBigCard({
     super.key,
     this.sensors = const [],
     this.isLoading = false,
+    this.title = "Histórico (Últimas 24h)",
   });
 
   @override
@@ -33,7 +35,7 @@ class AppBigCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Histórico (Últimas 24h)",
+              title,
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
