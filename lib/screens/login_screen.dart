@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:monitor_ambiente/constants/app_colors.dart';
 import 'package:monitor_ambiente/routes/app_router.dart';
+import 'package:monitor_ambiente/services/auth_service.dart';
 import 'package:monitor_ambiente/widgets/app_button.dart';
 import 'package:monitor_ambiente/widgets/app_input.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+
+import '../main.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -12,9 +16,16 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final AuthService _service = AuthService();
+  final _storage = const FlutterSecureStorage();
+
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  late bool isLoading;
 
   @override
   void initState() {
+    _init();
     super.initState();
   }
 
@@ -23,15 +34,36 @@ class _LoginScreenState extends State<LoginScreen> {
     super.dispose();
   }
 
-  void login() {
-    Navigator.pushReplacementNamed(context, AppRouter.homeScreen);
+  Future<void> _init() async {
+    isLoading = false;
+    emailController.text = await _storage.read(key: "email") ?? "";
+    passwordController.text = await _storage.read(key: "password") ?? "";
+  }
+
+  void _saveCredentials(String email, String password) {
+    _storage.write(key: "email", value: email);
+    _storage.write(key: "password", value: password);
+  }
+
+  void login(String email, String password) async {
+    isLoading = true;
+    var response = await _service.login(email, password);
+
+    if(response != null) {
+      isLoading = false;
+      _saveCredentials(email, password);
+      Navigator.pushReplacementNamed(navigatorKey.currentContext!, AppRouter.homeScreen);
+    } else {
+      isLoading = false;
+      AlertDialog(
+        title: const Text("Erro"),
+        content: const Text("Email ou senha incorretos"),
+      );
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController emailController = TextEditingController();
-    TextEditingController passwordController = TextEditingController();
-
     return Scaffold(
       backgroundColor: AppColors.background,
       body: SafeArea(
@@ -69,8 +101,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
                     AppButton(
                       title: "Entrar",
-                      isLoading: false,
-                      onPressed: () => login(),
+                      isLoading: isLoading,
+                      onPressed: () => login(emailController.text, passwordController.text),
                     ),
                   ],
                 ),

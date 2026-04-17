@@ -120,3 +120,5 @@ app.*.symbols
 android/app/google-services.json
 firebase.json
 lib/services/weather_service.dart
+lib/services/weather_service.dart
+lib/services/weather_service.dart

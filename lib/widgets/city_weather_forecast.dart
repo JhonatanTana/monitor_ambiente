@@ -3,7 +3,9 @@ import 'package:intl/intl.dart';
 import 'package:monitor_ambiente/constants/app_colors.dart';
 import 'package:monitor_ambiente/models/weather_model.dart';
 import 'package:monitor_ambiente/services/weather_service.dart';
+import 'package:shimmer/shimmer.dart';
 
+import 'app_shimmer.dart';
 import 'city_weather_forecast_icons.dart';
 
 class CityWeatherForecast extends StatefulWidget {
@@ -37,7 +39,7 @@ class _CityWeatherForecastState extends State<CityWeatherForecast> {
           future: _weatherFuture,
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(child: CircularProgressIndicator());
+              return const CityWeatherForecastShimmer();
             } else if (snapshot.hasError) {
               return Center(
                 child: Text(
@@ -119,3 +121,61 @@ class _CityWeatherForecastState extends State<CityWeatherForecast> {
     );
   }
 }
+
+class CityWeatherForecastShimmer extends StatelessWidget {
+  const CityWeatherForecastShimmer({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: double.infinity,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
+        child: Container(
+          color: Colors.transparent,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                spacing: 8,
+                children: [
+                  AppShimmer(
+                    width: 64,
+                    height: 64,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    spacing: 8,
+                    children: [
+                      AppShimmer(
+                        width: 100,
+                        height: 16,
+                      ),
+                      AppShimmer(
+                        width: 120,
+                        height: 16,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                spacing: 4,
+                children: [
+
+                  CityWeatherForecastIconsShimmer(),
+                  CityWeatherForecastIconsShimmer(),
+                  CityWeatherForecastIconsShimmer(),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+

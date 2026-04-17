@@ -4,6 +4,7 @@ import 'package:monitor_ambiente/widgets/app_big_card.dart';
 import 'package:monitor_ambiente/widgets/app_little_card.dart';
 import 'package:monitor_ambiente/widgets/city_weather_forecast.dart';
 
+import '../routes/app_router.dart';
 import '../widgets/app_top_bar.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -11,43 +12,50 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.background,
-      appBar: AppTopBar(),
-      body: Padding(
-        padding: const EdgeInsets.all(8),
-        child: Column(
-          children: [
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (didPop, result) {
+        if (didPop) return;
+        Navigator.pushReplacementNamed(context, AppRouter.loginScreen);
+      },
+      child: Scaffold(
+        backgroundColor: AppColors.background,
+        appBar: AppTopBar(),
+        body: Padding(
+          padding: const EdgeInsets.all(8),
+          child: Column(
+            children: [
+      
+              CityWeatherForecast(),
 
-            CityWeatherForecast(),
-
-            Row(
-              spacing: 8,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-               AppLittleCard(
-                 title: "Temperatura",
-                 icon: Icons.local_fire_department,
-                 colors: [Colors.orange, Colors.red],
-                 value: 25,
-                 maxValue: 50,
-                 unit: "°C",
-               ),
-               AppLittleCard(
-                 title: "Umidade",
-                 icon: Icons.water_drop,
-                 colors: [Colors.lightBlue, Colors.blue],
-                 value: 40,
-                 unit: "%",
-               ),
-              ],
-            ),
-
-            AppBigCard(),
-          ],
+              Row(
+                spacing: 8,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                 AppLittleCard(
+                   title: "Temperatura",
+                   icon: Icons.local_fire_department,
+                   colors: [Colors.orange, Colors.red],
+                   value: 25,
+                   maxValue: 50,
+                   unit: "°C",
+                 ),
+                 AppLittleCard(
+                   title: "Umidade",
+                   icon: Icons.water_drop,
+                   colors: [Colors.lightBlue, Colors.blue],
+                   value: 40,
+                   unit: "%",
+                 ),
+                ],
+              ),
+      
+              AppBigCard(),
+            ],
+          ),
         ),
+      
       ),
-
     );
   }
 }

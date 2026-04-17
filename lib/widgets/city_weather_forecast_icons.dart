@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:monitor_ambiente/constants/app_colors.dart';
+import 'package:monitor_ambiente/widgets/app_shimmer.dart';
 
 class CityWeatherForecastIcons extends StatelessWidget {
   final IconData icon;
@@ -28,3 +29,19 @@ class CityWeatherForecastIcons extends StatelessWidget {
     );
   }
 }
+
+class CityWeatherForecastIconsShimmer extends StatelessWidget {
+  const CityWeatherForecastIconsShimmer({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      spacing: 4,
+      children: [
+        AppShimmer(width: 20, height: 20),
+        AppShimmer(width: 40, height: 20),
+      ],
+    );
+  }
+}
+
