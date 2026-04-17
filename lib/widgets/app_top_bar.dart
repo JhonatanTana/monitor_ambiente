@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:monitor_ambiente/blocs/sensor/sensor_cubit.dart';
 import '../constants/app_colors.dart';
 
 class AppTopBar extends StatefulWidget implements PreferredSizeWidget {
@@ -74,7 +76,10 @@ class _AppTopBarState extends State<AppTopBar> {
           icon: Icon(Icons.notifications, color: Colors.amber),
         ),
         IconButton(
-          onPressed: () {},
+          onPressed: () {
+            final cubit = context.read<SensorCubit>();
+            cubit.fetchMeasures(filter: cubit.state.filter);
+          },
           icon: Icon(Icons.refresh, color: AppColors.primaryText),
         ),
       ],
