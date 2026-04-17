@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 
 import '../constants/app_colors.dart';
+import 'app_shimmer.dart';
 
 class AppLittleCard extends StatelessWidget {
   final String title;
@@ -10,6 +11,7 @@ class AppLittleCard extends StatelessWidget {
   final IconData icon;
   final List<Color> colors;
   final double maxValue;
+  final bool isLoading;
 
   const AppLittleCard({
     super.key,
@@ -19,11 +21,13 @@ class AppLittleCard extends StatelessWidget {
     required this.icon,
     required this.colors,
     this.maxValue = 100,
+    this.isLoading = false,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return isLoading ? AppLittleCardShimmer() :
+    Expanded(
       child: Card(
         elevation: 0,
         shape: RoundedRectangleBorder(
@@ -107,6 +111,68 @@ class AppLittleCard extends StatelessWidget {
                       ],
                     );
                   },
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class AppLittleCardShimmer extends StatelessWidget {
+  const AppLittleCardShimmer({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Card(
+        elevation: 0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+          side: BorderSide(color: Colors.grey.withValues(alpha: 0.1)),
+        ),
+        color: AppColors.onBackground,
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(16, 16, 16, 16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            spacing: 8,
+            children: [
+              Row(
+                spacing: 8,
+                children: [
+                  AppShimmer.circular(size: 28),
+                  AppShimmer(
+                    width: 80,
+                    height: 14,
+                  ),
+                ],
+              ),
+              Center(
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    AppShimmer.circular(size: 110),
+                    Container(
+                      width: 90,
+                      height: 90,
+                      decoration: BoxDecoration(
+                        color: AppColors.onBackground,
+                        shape: BoxShape.circle,
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        AppShimmer(width: 40, height: 36),
+                        const SizedBox(width: 4),
+                        AppShimmer(width: 20, height: 20),
+                      ],
+                    )
+                  ],
                 ),
               ),
             ],

@@ -3,7 +3,6 @@ import 'package:intl/intl.dart';
 import 'package:monitor_ambiente/constants/app_colors.dart';
 import 'package:monitor_ambiente/models/weather_model.dart';
 import 'package:monitor_ambiente/services/weather_service.dart';
-import 'package:shimmer/shimmer.dart';
 
 import 'app_shimmer.dart';
 import 'city_weather_forecast_icons.dart';

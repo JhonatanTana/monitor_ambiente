@@ -47,17 +47,27 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void login(String email, String password) async {
     isLoading = true;
+
     var response = await _service.login(email, password);
 
-    if(response != null) {
+    if (response == null) {
       isLoading = false;
+
       _saveCredentials(email, password);
-      Navigator.pushReplacementNamed(navigatorKey.currentContext!, AppRouter.homeScreen);
+
+      Navigator.pushReplacementNamed(
+        navigatorKey.currentContext!,
+        AppRouter.homeScreen,
+      );
     } else {
       isLoading = false;
-      AlertDialog(
-        title: const Text("Erro"),
-        content: const Text("Email ou senha incorretos"),
+
+      showDialog(
+        context: navigatorKey.currentContext!,
+        builder: (_) => AlertDialog(
+          title: const Text("Erro"),
+          content: Text(response),
+        ),
       );
     }
   }
