@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:monitor_ambiente/constants/app_colors.dart';
 import 'package:monitor_ambiente/routes/app_router.dart';
 import 'package:monitor_ambiente/services/auth_service.dart';
+import 'package:monitor_ambiente/widgets/app_alert_dialog.dart';
 import 'package:monitor_ambiente/widgets/app_button.dart';
 import 'package:monitor_ambiente/widgets/app_input.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -70,13 +71,10 @@ class _LoginScreenState extends State<LoginScreen> {
         isLoading = false;
       });
 
-      showDialog(
-        context: navigatorKey.currentContext!,
-        builder: (_) => AlertDialog(
-          title: const Text("Erro"),
-          content: Text(response),
-        ),
-      );
+      AppAlertDialog.show(
+        title: "Erro",
+        content: "Houve um erro ao realizar o login. \n Erro: $response",
+        isError: true);
     }
   }
 

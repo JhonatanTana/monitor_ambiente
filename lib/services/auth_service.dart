@@ -27,8 +27,11 @@ class AuthService {
   }
 
   Future<String?> updateUserName(String name) async {
-    _firebaseAuth.currentUser?.updateDisplayName(name);
-    return getUserName();
+    await _firebaseAuth.currentUser?.updateDisplayName(name);
+    await _firebaseAuth.currentUser?.reload();
+    return _firebaseAuth.currentUser?.displayName;
   }
+
+  Stream<User?> get userChanges => _firebaseAuth.userChanges();
 
 }

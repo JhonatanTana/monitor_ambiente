@@ -40,7 +40,7 @@ class AppButton extends StatelessWidget {
                 ),
               ),
             ),
-            Text(isLoading ? "Carregando" : "Entrar"),
+            Text(isLoading ? "Carregando" : title),
           ],
         ),
       ),

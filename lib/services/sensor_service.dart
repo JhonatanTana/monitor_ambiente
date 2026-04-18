@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:monitor_ambiente/widgets/app_alert_dialog.dart';
 
 import '../models/sensor.dart';
 
@@ -17,7 +18,10 @@ class SensorService {
           .map((doc) => Sensor.fromMap(doc.data()))
           .toList();
     } catch (e) {
-      debugPrint("Erro ao buscar medidas: $e");
+      AppAlertDialog.show(
+        title: "Erro",
+        content: "Erro ao buscar medidas. \n Erro: $e"
+      );
       return [];
     }
   }

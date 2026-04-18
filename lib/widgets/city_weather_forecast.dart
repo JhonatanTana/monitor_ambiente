@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:monitor_ambiente/constants/app_colors.dart';
 import 'package:monitor_ambiente/models/weather_model.dart';
 import 'package:monitor_ambiente/services/weather_service.dart';
+import 'package:monitor_ambiente/widgets/app_alert_dialog.dart';
 
 import 'app_shimmer.dart';
 import 'city_weather_forecast_icons.dart';
@@ -21,7 +22,19 @@ class _CityWeatherForecastState extends State<CityWeatherForecast> {
   @override
   void initState() {
     super.initState();
-    _weatherFuture = _weatherService.fetchWeather("Varginha");
+    _init();
+  }
+
+  void _init() {
+    try {
+      _weatherFuture = _weatherService.fetchWeather("Varginha");
+    } catch (e) {
+      AppAlertDialog.show(
+        title: "Erro",
+        content: "Houve um erro ao recupera os dados de clima da cidade. \n Erro: $e",
+        isError: true
+      );
+    }
   }
 
   String _getWeatherIcon(String iconCode) {
