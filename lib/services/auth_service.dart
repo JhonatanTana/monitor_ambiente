@@ -21,9 +21,9 @@ class AuthService {
     return user?.displayName;
   }
 
-  Future<String?> getEmail() async {
+  Future<String> getEmail() async {
     final user = FirebaseAuth.instance.currentUser;
-    return user?.email;
+    return user?.email ?? "";
   }
 
   Future<String?> updateUserName(String name) async {

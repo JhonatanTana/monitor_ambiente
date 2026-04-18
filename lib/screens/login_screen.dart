@@ -46,21 +46,29 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void login(String email, String password) async {
-    isLoading = true;
+
+    setState(() {
+      isLoading = true;
+    });
 
     var response = await _service.login(email, password);
 
     if (response == null) {
-      isLoading = false;
-
       _saveCredentials(email, password);
+
+      setState(() {
+        isLoading = false;
+      });
 
       Navigator.pushReplacementNamed(
         navigatorKey.currentContext!,
         AppRouter.homeScreen,
       );
     } else {
-      isLoading = false;
+
+      setState(() {
+        isLoading = false;
+      });
 
       showDialog(
         context: navigatorKey.currentContext!,
